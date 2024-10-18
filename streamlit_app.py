@@ -13,7 +13,7 @@ length= st.number_input(
 ### Generate the answer to the question
 st.header("🎈 High level of creativity response")
 st.write(
-generator(prompt, max_length=length, temperature=100, truncation=True)[0]["generated_text"]
+generator(prompt, max_length=length, do_sample=False, truncation=True)[0]["generated_text"]
 )
 
 st.header("🎈 Predictable response")
