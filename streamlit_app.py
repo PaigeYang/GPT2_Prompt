@@ -12,7 +12,7 @@ length= st.number_input(
 
 ### Generate the answer to the question "Damascus is a"
 st.write(
-generator(prompt, max_length=length, truncation=True)[0]
+generator(prompt, max_length=length, truncation=True)[0]["generated_text"]
 )
 
 
