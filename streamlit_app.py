@@ -18,7 +18,7 @@ generator(prompt, max_length=length, do_sample=False, truncation=True)[0]["gener
 
 st.header("🎈 Predictable response")
 st.write(
-generator(prompt, max_length=length, temperature=0, truncation=True)[0]["generated_text"]
+generator(prompt, max_length=length, truncation=True)[0]["generated_text"]
 )
 
 st.title("🎈 My new app")
