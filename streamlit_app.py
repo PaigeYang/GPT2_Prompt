@@ -12,8 +12,13 @@ length= st.number_input(
 
 ### Generate the answer to the question
 st.header("🎈 High level of creativity response")
+
+generate_kwargs = {
+    "temperature": 100,
+}
+
 st.write(
-generator(prompt, max_length=length, do_sample=False, truncation=True)[0]["generated_text"]
+generator(prompt, max_length=length, truncation=True, generate_kwargs=generate_kwargs)[0]["generated_text"]
 )
 
 st.header("🎈 Predictable response")
