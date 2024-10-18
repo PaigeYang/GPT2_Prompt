@@ -2,3 +2,4 @@ streamlit
 pipeline
 tensorflow
 tf-keras
+transformers
