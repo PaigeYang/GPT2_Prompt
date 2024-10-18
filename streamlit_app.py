@@ -11,12 +11,12 @@ length= st.number_input(
 
 
 ### Generate the answer to the question
-st.title("🎈 High level of creativity response")
+st.header("🎈 High level of creativity response")
 st.write(
-generator(prompt, max_length=length, temperature=1000, truncation=True)[0]["generated_text"]
+generator(prompt, max_length=length, temperature=100, truncation=True)[0]["generated_text"]
 )
 
-st.title("🎈 Predictable response")
+st.header("🎈 Predictable response")
 st.write(
 generator(prompt, max_length=length, temperature=0, truncation=True)[0]["generated_text"]
 )
