@@ -14,7 +14,7 @@ length= st.number_input(
 st.header("🎈 High level of creativity response")
 
 generate_kwargs = {
-    "temperature": 100,
+    "temperature": 0.7,
 }
 
 st.write(
