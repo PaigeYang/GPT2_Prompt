@@ -16,7 +16,7 @@ st.header("🎈 High level of creativity response")
 
 
 st.write(
-generator(prompt, max_length=length, temperature=2, truncation=True)[0]["generated_text"]
+generator(prompt, max_length=length, temperature=1, truncation=True)[0]["generated_text"]
 )
 
 st.header("🎈 Predictable response")
