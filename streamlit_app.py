@@ -16,14 +16,14 @@ instruction = """
 Based on the user's query, find detailed information on the place(s) in Boston.
 1) Ensure the recommendation is located in Boston
 2) Details to Provide:
-- Name of the cafe/bar/restaurant
+- Name of the the place(s)
 - Address
 - Website link (if available).
 - Phone number
 - Google rating
 3. Analyze and summarize the overall sentiment from reviews.
 Highlight the key strengths and potential drawbacks of the place. 
-Recommend whether the location is best suited for:
+Recommend whether the location is suited for:
 - Gatherings (consider factors like location, accessibility, seating, etc. for groups of friends or families)
 - Dating (consider factors like atmosphere, cuisine, service quality, etc. for couples)
 - Remote Working (consider factors like noise level, availability of outlets, Wi-Fi, etc.)
