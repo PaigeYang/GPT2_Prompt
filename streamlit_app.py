@@ -37,7 +37,7 @@ tools = [
 
 # Defining the agent
 agent = create_tool_calling_agent(chat, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools) #, verbose=True
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True) #, verbose=True
 
 st.write("Vanilla LLM answer:", chat(question).content)
 
