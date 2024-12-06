@@ -54,7 +54,6 @@ tools = [
     )
 ]
 
-
 # Defining the agent
 agent = create_tool_calling_agent(chat, tools, prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True) #, verbose=True
@@ -66,7 +65,5 @@ if user_query:
     # Run the agent
     st.write("*****")
     #st.write("Agent answer:", agent_executor.invoke({"input": question})["output"])
-
-    st.write(instruction)
     
     st.write("Agent answer:", agent_executor.invoke({"input": instruction})["output"])
