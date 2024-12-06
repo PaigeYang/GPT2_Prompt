@@ -10,7 +10,7 @@ import os
 OPENAI_API_KEY = st.secrets["OpenAIkey"]
 
 
-question = st.text_input
+question = st.text_input("Whic restaurant you are looking for?")
 
 
 prompt = ChatPromptTemplate.from_messages(
@@ -34,7 +34,6 @@ tools = [
     )
 ]
 
-question
 
 # Defining the agent
 agent = create_tool_calling_agent(chat, tools, prompt)
