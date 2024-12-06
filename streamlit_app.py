@@ -10,7 +10,28 @@ import os
 OPENAI_API_KEY = st.secrets["OpenAIkey"]
 
 
-question = st.text_input("Whic restaurant you are looking for?")
+user_query = st.text_input("Which restaurant you are looking for?")
+
+instruction = """
+Based on the user's query, find detailed information about a cafe/bar/restaurant in Boston.
+1) Ensure the recommendation is located in Boston
+2) Details to Provide:
+- Name of the cafe/bar/restaurant
+- Address
+- Website link (if available).
+- Phone number
+- Google rating
+3. Analyze and summarize the overall sentiment from reviews.
+Highlight the key strengths and potential drawbacks of the place. 
+Recommend whether the location is best suited for:
+- Gatherings (consider factors like location, accessibility, seating, etc. for groups of friends or families)
+- Dating (consider factors like atmosphere, cuisine, service quality, etc. for couples)
+- Remote Working (consider factors like noise level, availability of outlets, Wi-Fi, etc.)
+
+User query: {user_query}
+"""
+
+chat = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model="gpt-4o-mini")
 
 
 prompt = ChatPromptTemplate.from_messages(
@@ -21,7 +42,7 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-chat = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model="gpt-4o-mini")
+
 
 # Setting up the Serper tool
 os.environ["SERPER_API_KEY"] = st.secrets['SERPER_API']
@@ -44,3 +65,5 @@ st.write("Vanilla LLM answer:", chat(question).content)
 # Run the agent
 st.write("*****")
 st.write("Agent answer:", agent_executor.invoke({"input": question})["output"])
+
+st.write("Agent answer:", agent_executor.invoke({"input": instruction})["output"])
