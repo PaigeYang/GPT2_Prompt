@@ -1,25 +1,44 @@
 import streamlit as st
-from transformers import pipeline
+from langchain_community.utilities import GoogleSerperAPIWrapper
+from langchain_core.tools import Tool
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.agents import AgentExecutor, create_tool_calling_agent
+import os
 
-### Create a GPT2 generator pipeline
-generator = pipeline("text-generation", model="gpt2")
 
-st.title("🎈My IS883 Week6 Assignment")
 
-prompt = st.text_input("What is your prompt today?")
-length= st.number_input(
-    "The expected length of the response", value=20, placeholder="Type a number..."
+question = st.text_input
+
+
+prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", "You are a helpful assistant"),
+        ("human", "{input}"),
+        ("placeholder", "{agent_scratchpad}"), # To be used by the agent for intermediate operations.
+    ]
 )
 
-### Generate the answer to the question
-### Set temperature as 100 for high level of creativity response
-st.header("High level of creativity response")
-st.write(
-generator(prompt, max_length=length, temperature=100.0, truncation=True)[0]["generated_text"]
-)
+chat = ChatOpenAI(openai_api_key=openai_api_key, model="gpt-4o-mini")
 
-### Set temperature as 0.1 for predictable response
-st.header("Predictable response")
-st.write(
-generator(prompt, max_length=length, temperature=0.1, truncation=True)[0]["generated_text"]
-)
+# Setting up the Serper tool
+os.environ["SERPER_API_KEY"] = userdata.get('SERPER_API')
+search = GoogleSerperAPIWrapper()
+tools = [
+    Tool(
+        name="GoogleSerper",
+        func=search.run,
+        description="Useful for when you need to look up some information on the internet.",
+    )
+]
+
+question
+
+# Defining the agent
+agent = create_tool_calling_agent(chat, tools, prompt)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True) #, verbose=True
+
+st.write("Vanilla LLM answer:", chat(question).content)
+
+# Run the agent
+st.write("*****")
+st.write("Agent answer:", agent_executor.invoke({"input": question})["output"])
