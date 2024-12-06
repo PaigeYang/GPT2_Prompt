@@ -64,6 +64,6 @@ st.write("Vanilla LLM answer:", chat(question).content)
 
 # Run the agent
 st.write("*****")
-st.write("Agent answer:", agent_executor.invoke({"input": question})["output"])
+#st.write("Agent answer:", agent_executor.invoke({"input": question})["output"])
 
 st.write("Agent answer:", agent_executor.invoke({"input": instruction})["output"])
