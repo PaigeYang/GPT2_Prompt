@@ -66,5 +66,7 @@ if user_query:
     # Run the agent
     st.write("*****")
     #st.write("Agent answer:", agent_executor.invoke({"input": question})["output"])
+
+    st.write(instruction)
     
     st.write("Agent answer:", agent_executor.invoke({"input": instruction})["output"])
