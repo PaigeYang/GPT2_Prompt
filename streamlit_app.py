@@ -8,6 +8,8 @@ import os
 
 
 OPENAI_API_KEY = st.secrets["OpenAIkey"]
+
+
 question = st.text_input
 
 
@@ -22,7 +24,7 @@ prompt = ChatPromptTemplate.from_messages(
 chat = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model="gpt-4o-mini")
 
 # Setting up the Serper tool
-os.environ["SERPER_API_KEY"] = userdata.get('SERPER_API')
+os.environ["SERPER_API_KEY"] = st.secrets('SERPER_API')
 search = GoogleSerperAPIWrapper()
 tools = [
     Tool(
