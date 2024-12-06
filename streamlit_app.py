@@ -13,10 +13,9 @@ OPENAI_API_KEY = st.secrets["OpenAIkey"]
 user_query = st.text_input("Which restaurant you are looking for?")
 
 instruction = """
-Based on the user's query, find detailed information on the place(s) in Boston.
-1) Ensure the recommendation is located in Boston
-2) Details to Provide:
-- Name of the the place(s)
+Based on the user's query, please search for detailed information on that place(s) in Boston.
+1) Details to Provide:
+- Name
 - Address
 - Website link (if available).
 - Phone number
